@@ -1,34 +1,11 @@
-import {useEffect, useRef} from "react";
-import maplibregl, {Map} from "maplibre-gl";
 import 'maplibre-gl/dist/maplibre-gl.css';
+import {useMap} from "../hook/useMap.ts";
+import useInfluencerLayers from "../hook/useInfluencerLayers.ts";
 
 function GlobeView() {
-    const mapContainer = useRef<HTMLDivElement | null>(null);
-    const mapRef = useRef<Map | null>(null);
+    const { mapContainer, mapRef } = useMap();
 
-    useEffect(() => {
-        if (!mapContainer.current || mapRef.current) return;
-
-        const map = new maplibregl.Map({
-            container: mapContainer.current,
-            style: 'https://demotiles.maplibre.org/style.json',
-            center: [0, 0],
-            zoom: 2,
-        });
-
-        map.on('style.load', () => {
-            map.setProjection({
-                type: 'globe',
-            });
-        });
-
-        mapRef.current = map;
-
-        return () => {
-            map.remove();
-            mapRef.current = null;
-        };
-    }, []);
+    useInfluencerLayers(mapRef);
 
     return (
         <div
@@ -41,4 +18,4 @@ function GlobeView() {
     );
 }
 
-export default GlobeView
+export default GlobeView;
