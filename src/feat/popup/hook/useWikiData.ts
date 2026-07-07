@@ -8,7 +8,7 @@ interface WikiSummary {
     error: boolean;
 }
 
-export function useWikiData(wikipediaUrl: string | undefined) {
+function useWikiData(wikipediaUrl: string | undefined) {
 
     const [data, setData] = useState<WikiSummary>(() => {
         const hasValidUrl = wikipediaUrl && wikipediaUrl.includes('/wiki/');
@@ -60,3 +60,5 @@ export function useWikiData(wikipediaUrl: string | undefined) {
 
     return data;
 }
+
+export default useWikiData
