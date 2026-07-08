@@ -26,7 +26,7 @@ function useInfluencerLayers(mapRef: RefObject<Map | null>) {
 
             map.addSource('influencers-source', {
                 type: 'geojson',
-                data: `${import.meta.env.BASE_URL}/public/data/04_map_data.geojson`,
+                data: `${import.meta.env.BASE_URL}/data/04_map_data.geojson`,
             });
 
             map.addLayer({
