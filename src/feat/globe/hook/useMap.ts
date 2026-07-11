@@ -10,7 +10,7 @@ export function useMap() {
 
         const map = new maplibregl.Map({
             container: mapContainer.current,
-            style: 'https://tiles.openfreemap.org/styles/positron',
+            style: 'https://tiles.openfreemap.org/styles/dark',
             center: [-55, -12],
             zoom: 3.2,
         });
